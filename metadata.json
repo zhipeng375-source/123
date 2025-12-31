@@ -1,0 +1,7 @@
+{
+  "name": "Shuangliang Smart PM",
+  "description": "A comprehensive project management and opportunity tracking system tailored for Shuangliang Cooling Systems, featuring AI-driven insights.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
