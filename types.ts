@@ -1,90 +1,33 @@
-export enum ProjectStatus {
-  PLANNING = '规划中',
-  BIDDING = '投标中',
-  ONGOING = '进行中',
-  COMPLETED = '已完工',
-  HALTED = '暂停'
-}
-
-export enum TaskStatus {
-  NOT_STARTED = '未开始',
-  IN_PROGRESS = '进行中',
-  COMPLETED = '已完成',
-  PAUSED = '已暂停'
-}
-
-export enum TaskPriority {
-  LOW = 'Low',
-  MEDIUM = 'Medium',
-  HIGH = 'High'
-}
-
-export interface Task {
-  id: string;
-  name: string;
-  owner: string;
-  startDate: string;
-  endDate: string;
-  status: TaskStatus;
-  priority: TaskPriority;
-  actualCompletionDate?: string;
-  notes?: string;
-}
-
-export enum OpportunityStage {
-  NEW = '线索发现',
-  QUALIFIED = '需求确认',
-  PROPOSAL = '方案报价',
-  NEGOTIATION = '商务谈判',
-  WON = '赢单',
-  LOST = '输单'
-}
-
 export interface Project {
   id: string;
   name: string;
-  clientName: string;
-  location: string;
-  budget: number; // in Wan RMB
-  status: ProjectStatus;
-  startDate: string;
-  description: string;
-  technicalSpecs: string; // e.g., "Absorption Chiller, 2000RT"
-  tasks: Task[];
+  description?: string;
+  location?: string;
+  client?: string;
+  value?: number;
+  stage?: string;
 }
 
 export interface Opportunity {
-  id: string;
-  projectId?: string; // Links to a potential project
+  id?: string;
   projectName: string;
-  
-  // Contact & Client Info
-  clientName: string; // New field for clarity if project not linked yet
-  contactPerson?: string;
-  phone?: string;
-  email?: string;
-  address?: string;
-  
-  // Business Info
-  source?: string;
-  description?: string; // Needs description
+  clientName: string;
+  location?: string;
+  address?: string; // Compatible alias
+  description: string;
   expectedValue: number;
-  stage: OpportunityStage;
-  probability: number; // 0-100
-  expectedSigningDate?: string;
-  owner: string;
-  lastContactDate: string;
+  source?: string;
+  stage?: string;
+  probability?: number;
 }
 
-export interface NewsItem {
-  id: string;
-  title: string;
-  summary: string;
-  date: string;
-  source: string;
-  url?: string;
-  sector: 'Waste-to-Energy' | 'Power' | 'Petrochemical' | 'Other';
-  isRead: boolean;
+export enum OpportunityStage {
+  NEW = 'New',
+  QUALIFIED = 'Qualified',
+  PROPOSAL = 'Proposal',
+  NEGOTIATION = 'Negotiation',
+  CLOSED_WON = 'Closed Won',
+  CLOSED_LOST = 'Closed Lost'
 }
 
 export interface AnalysisResult {
@@ -94,8 +37,18 @@ export interface AnalysisResult {
   missingInfo: string[];
 }
 
+export interface NewsItem {
+  id: string;
+  title: string;
+  summary: string;
+  date: string;
+  source: string;
+  url: string;
+  sector: string;
+  isRead: boolean;
+}
+
 export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
-  isThinking?: boolean;
 }
