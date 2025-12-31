@@ -1,16 +1,21 @@
-// 全量补全版 types.ts - 修复所有 TS 报错
+// Strict Fix based on Error Logs
+// 修复了所有 Property 'X' does not exist 错误
 
-// 1. 枚举定义 (Enums)
 export enum ProjectStatus {
   PLANNING = 'Planning',
+  ONGOING = 'Ongoing', // 修复报错: Property 'ONGOING' missing
+  BIDDING = 'Bidding', // 修复报错: Property 'BIDDING' missing
   IN_PROGRESS = 'In Progress',
   COMPLETED = 'Completed',
   ON_HOLD = 'On Hold'
 }
 
 export enum TaskStatus {
+  NOT_STARTED = 'Not Started', // 修复报错: Property 'NOT_STARTED' missing
   TODO = 'To Do',
   IN_PROGRESS = 'In Progress',
+  PAUSED = 'Paused', // 修复报错: Property 'PAUSED' missing
+  COMPLETED = 'Completed', // 修复报错: Property 'COMPLETED' missing
   DONE = 'Done'
 }
 
@@ -25,36 +30,39 @@ export enum OpportunityStage {
   QUALIFIED = 'Qualified',
   PROPOSAL = 'Proposal',
   NEGOTIATION = 'Negotiation',
+  WON = 'Closed Won', // 修复报错: Property 'WON' missing
+  LOST = 'Closed Lost', // 修复报错: Property 'LOST' missing
   CLOSED_WON = 'Closed Won',
-  CLOSED_LOST = 'Closed Lost',
-  WON = 'Closed Won', // 兼容性别名
-  LOST = 'Closed Lost' // 兼容性别名
+  CLOSED_LOST = 'Closed Lost'
 }
-
-// 2. 接口定义 (Interfaces)
 
 export interface Task {
   id: string;
-  title: string;
+  name: string; // 修复报错: Property 'name' missing
+  title?: string; // 兼容旧代码
   description?: string;
-  status: TaskStatus | string;
-  priority: TaskPriority | string;
+  status?: TaskStatus | string;
+  priority?: TaskPriority | string;
+  owner?: string; // 修复报错: Property 'owner' missing
   assignee?: string;
-  dueDate?: string;
+  startDate?: string; // 修复报错: Property 'startDate' missing
+  endDate?: string; // 修复报错: Property 'endDate' missing
+  actualCompletionDate?: string; // 修复报错: Property 'actualCompletionDate' missing
+  notes?: string; // 修复报错: Property 'notes' missing
 }
 
 export interface Project {
   id: string;
   name: string;
-  clientName?: string;     // 修复: Property 'clientName' missing
+  clientName?: string;
   description?: string;
   location?: string;
   value?: number;
-  budget?: number;         // 修复: Property 'budget' missing
-  status?: ProjectStatus | string; // 修复: Property 'status' missing
-  startDate?: string;      // 修复: Property 'startDate' missing
-  technicalSpecs?: string; // 修复: Property 'technicalSpecs' missing
-  tasks?: Task[];          // 修复: Property 'tasks' missing
+  budget?: number;
+  status?: ProjectStatus | string;
+  startDate?: string;
+  technicalSpecs?: string;
+  tasks?: Task[];
   stage?: string;
 }
 
@@ -70,13 +78,12 @@ export interface Opportunity {
   stage?: OpportunityStage | string;
   probability?: number;
   
-  // 修复: 补全缺失的联系人和所有者字段
-  owner?: string;
-  contactPerson?: string;
-  phone?: string;
-  email?: string;
-  expectedSigningDate?: string;
-  lastContactDate?: string;
+  owner?: string; // 修复报错
+  contactPerson?: string; // 修复报错
+  phone?: string; // 修复报错
+  email?: string; // 修复报错
+  expectedSigningDate?: string; // 修复报错
+  lastContactDate?: string; // 修复报错
 }
 
 export interface AnalysisResult {
