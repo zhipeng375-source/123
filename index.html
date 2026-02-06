@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Hydraulic | Гидравлические системы мирового класса</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* 首页特有样式 */
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            transform-origin: center center;
+            transition: transform 6s ease-out; 
+        }
+        
+        /* 修复动画逻辑 */
+        .carousel-fade .carousel-item {
+            opacity: 0;
+            transition-duration: 1.5s;
+            transition-property: opacity;
+        }
+        
+        .carousel-fade .carousel-item.active {
+            opacity: 1;
+        }
+
+        /* Ken Burns 效果 */
+        .carousel-item.active .hero-section {
+            animation: kenBurns 8s ease-out forwards;
+        }
+
+        @keyframes kenBurns {
+            0% { background-size: 100%; }
+            100% { background-size: 108%; } 
+        }
+        
+        .hero-content {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 30px;
+        }
+        
+        /* 新版 Hero 内容样式 */
+        .mask-overlay { pointer-events: none; }
+        .hero-content-wrapper { 
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 1.5s ease-out;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        /* 内容延迟出现 */
+        .active .hero-content-wrapper { 
+            opacity: 1; 
+            transform: translateY(0);
+            transition-delay: 0.5s; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <strong style="color: var(--primary-color);">GLOBAL<span style="color: var(--secondary-color);">HYDRAULIC</span></strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">ГЛАВНАЯ</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">КАТАЛОГ</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="product-pumps.html">Насосы (Pumps)</a></li>
+                            <li><a class="dropdown-item" href="product-motors.html">Моторы (Motors)</a></li>
+                            <li><a class="dropdown-item" href="product-gearpumps.html">Шестеренные (Gear Pumps)</a></li>
+                            <li><a class="dropdown-item" href="product-reducers.html">Редукторы (Reducers)</a></li>
+                            <li><a class="dropdown-item" href="product-parts.html">Запчасти (Spare Parts)</a></li>
+                            <li><a class="dropdown-item" href="product-valves.html">Клапаны (Valves)</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">О КОМПАНИИ</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-primary-custom" href="#contacts">СВЯЗАТЬСЯ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 轮播巨幕区 -->
+    <header id="heroCarousel" class="carousel slide carousel-fade bg-dark" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <!-- Slide 1: 新年特辑 (High-End Design) -->
+            <div class="carousel-item active hero-section" style="background-image: url('/images/hero-newyear.jpg');">
+                <!-- 遮罩层：保证文字可读性 -->
+                <div class="mask-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(90deg, rgba(0, 15, 30, 0.9) 0%, rgba(0, 43, 73, 0.6) 50%, rgba(0,0,0,0) 100%);"></div>
+                
+                <div class="container h-100 position-relative">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-lg-7 col-xl-6">
+                            <div class="hero-content-wrapper p-5" style="backdrop-filter: blur(5px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px;">
+                                <div class="d-inline-block px-3 py-1 mb-3 rounded-pill bg-warning text-dark fw-bold small text-uppercase">
+                                    <i class="fas fa-star me-1"></i> С НОВЫМ ГОДОМ
+                                </div>
+                                <h1 class="display-3 fw-bolder mb-4 text-white lh-sm" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                                    НОВЫЕ<br>ВОЗМОЖНОСТИ<br><span style="color: var(--secondary-color);">В НОВОМ ГОДУ</span>
+                                </h1>
+                                <p class="lead mb-5 text-light fw-normal" style="font-size: 1.25rem;">
+                                    Желаем процветания вашему бизнесу! Мы продолжаем работать для вас в праздники и готовы к новым отгрузкам.
+                                </p>
+                                <div class="d-flex gap-3 animate-up">
+                                    <a href="#catalog" class="btn btn-primary-custom btn-lg px-5 shadow-lg">
+                                        <i class="fas fa-list me-2"></i> Перейти в каталог
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: 经典产品 (Professional) -->
+            <div class="carousel-item hero-section" style="background-image: url('/images/hero-product-v2.jpg');">
+                <div class="mask-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 43, 73, 0.5) 60%, rgba(0,0,0,0) 100%);"></div>
+                
+                <div class="container h-100 position-relative">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-lg-7 col-xl-6">
+                            <div class="hero-content-wrapper ps-4" style="border-left: 5px solid var(--secondary-color);">
+                                <h5 class="text-uppercase letter-spacing-2 mb-3 text-light opacity-75 fw-bold">Мировые стандарты качества</h5>
+                                <h1 class="display-3 fw-bolder mb-4 text-white">ГИДРАВЛИКА<br>ПРЕМИУМ КЛАССА</h1>
+                                <p class="lead mb-5 text-light opacity-90">
+                                    Официальные поставки Bosch Rexroth, Parker, Danfoss.<br>
+                                    <span class="text-warning"><i class="fas fa-check me-2"></i>5000+ позиций на складе</span><br>
+                                    <span class="text-warning"><i class="fas fa-check me-2"></i>Прямые платежи в ВТБ</span>
+                                </p>
+                                <div class="d-flex gap-3">
+                                    <a href="#catalog" class="btn btn-outline-light btn-lg px-4 fw-bold">В КАТАЛОГ</a>
+                                    <a href="#contacts" class="btn btn-primary-custom btn-lg px-4 shadow-lg">ЗАПРОСИТЬ ЦЕНУ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3: 替代方案 (Substitute) -->
+            <div class="carousel-item hero-section" style="background-image: url('/images/hero-substitute.jpg');">
+                <div class="mask-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 43, 73, 0.5) 60%, rgba(0,0,0,0) 100%);"></div>
+                
+                <div class="container h-100 position-relative">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-lg-7 col-xl-6">
+                            <div class="hero-content-wrapper ps-4" style="border-left: 5px solid var(--secondary-color);">
+                                <h5 class="text-uppercase letter-spacing-2 mb-3 text-light opacity-75 fw-bold">Лучшая альтернатива</h5>
+                                <h1 class="display-3 fw-bolder mb-4 text-white">КАЧЕСТВЕННЫЕ<br>АНАЛОГИ</h1>
+                                <p class="lead mb-5 text-light opacity-90">
+                                    Полная взаимозаменяемость с оригиналом.<br>
+                                    <span class="text-warning"><i class="fas fa-check me-2"></i>100% Совместимость</span><br>
+                                    <span class="text-warning"><i class="fas fa-shield-alt me-2"></i>Гарантия 1 год</span>
+                                </p>
+                                <div class="d-flex gap-3">
+                                    <a href="#catalog" class="btn btn-outline-light btn-lg px-4 fw-bold">В КАТАЛОГ</a>
+                                    <a href="#contacts" class="btn btn-primary-custom btn-lg px-4 shadow-lg">УЗНАТЬ ПОДРОБНЕЕ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 轮播控制 -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </header>
+
+    <!-- 品牌条 -->
+    <div class="bg-white py-4 border-bottom">
+        <div class="container">
+            <div class="row text-center align-items-center opacity-50 grayscale-hover g-4">
+                <div class="col"><h4 class="fw-bold m-0" style="color:#333">BOSCH REXROTH</h4></div>
+                <div class="col"><h4 class="fw-bold m-0" style="color:#333">DANFOSS</h4></div>
+                <div class="col"><h4 class="fw-bold m-0" style="color:#333">PARKER</h4></div>
+                <div class="col"><h4 class="fw-bold m-0" style="color:#333">EATON</h4></div>
+                <div class="col"><h4 class="fw-bold m-0" style="color:#333">Аналоги (PINXIN)</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 热门产品目录 -->
+    <section id="catalog" class="py-5" style="background-color: #f4f6f9;">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h6 class="text-primary fw-bold text-uppercase">Наша продукция</h6>
+                <h2 class="fw-bold display-6">Популярные категории</h2>
+                <div style="width: 60px; height: 3px; background: var(--secondary-color); margin: 20px auto;"></div>
+            </div>
+
+            <div class="row g-4">
+                <!-- 产品卡片 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="hover-card">
+                        <div class="card-img-wrapper">
+                            <img src="/images/pump.jpg" alt="A10VSO Pump">
+                            <div class="position-absolute top-0 end-0 m-3 badge bg-success">TOP SELLER</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2 h5">Насосы A10VSO</h4>
+                            <p class="text-muted small mb-3">Серия 31/32/52. Аналог Rexroth.</p>
+                            <a href="product-pumps.html" class="btn btn-outline-dark w-100 fw-bold btn-sm">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品卡片 2 (Motor) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="hover-card">
+                        <div class="card-img-wrapper">
+                            <img src="/images/motor.jpg" alt="Hydraulic Motor">
+                            <div class="position-absolute top-0 end-0 m-3 badge bg-warning text-dark">NEW</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2 h5">Моторы A2FM/A6VM</h4>
+                            <p class="text-muted small mb-3">Аксиально-поршневые гидромоторы.</p>
+                            <a href="product-motors.html" class="btn btn-outline-dark w-100 fw-bold btn-sm">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品卡片 3 (Gear Pumps) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="hover-card">
+                        <div class="card-img-wrapper">
+                            <img src="/images/pump-azpf.jpg" alt="Gear Pumps">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2 h5">Шестеренные насосы</h4>
+                            <p class="text-muted small mb-3">Серия AZPF (внешние) / PGH (внутренние).</p>
+                            <a href="product-gearpumps.html" class="btn btn-outline-dark w-100 fw-bold btn-sm">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品卡片 4 -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="hover-card">
+                        <div class="card-img-wrapper">
+                            <img src="/images/parts2.jpg" alt="Spare Parts">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2 h5">Запчасти (Rotary Group)</h4>
+                            <p class="text-muted small mb-3">Ремкомплекты для насосов Rexroth/Sauer/Eaton.</p>
+                            <a href="product-parts.html" class="btn btn-outline-dark w-100 fw-bold btn-sm">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品卡片 5 -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="hover-card">
+                        <div class="card-img-wrapper">
+                            <img src="/images/valve.jpg" alt="Control Valves">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2 h5">Гидроклапаны 4WE</h4>
+                            <p class="text-muted small mb-3">Распределители CETOP 3 / CETOP 5.</p>
+                            <a href="product-valves.html" class="btn btn-outline-dark w-100 fw-bold btn-sm">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 优势部分 -->
+    <section id="about" class="py-5 bg-dark text-white">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h6 class="text-warning fw-bold text-uppercase">Почему выбирают нас</h6>
+                    <h2 class="display-6 fw-bold mb-4">5000+ оригинальных позиций.</h2>
+                    <p class="text-white-50 mb-4">Огромный склад оригинальной гидравлики и удобная система расчетов для клиентов из РФ.</p>
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <h3 class="fw-bold text-warning">5000+</h3>
+                            <p class="small">Единиц на складе</p>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="fw-bold text-warning">VTB</h3>
+                            <p class="small">Платежи без блокировок</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4 border border-secondary rounded bg-secondary bg-opacity-10">
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-warehouse fa-2x text-warning"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5 class="fw-bold">Огромный склад оригинальной гидравлики</h5>
+                                <p class="small text-white-50 m-0">Более 5000 наименований оригинальных запчастей Rexroth и аналогов готовы к немедленной отгрузке.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-file-invoice-dollar fa-2x text-warning"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5 class="fw-bold">Счет в ВТБ Шанхай</h5>
+                                <p class="small text-white-50 m-0">Принимаем рубли и юани на прямой счет в филиале ВТБ. Никаких задержек и блокировок платежей.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-dolly fa-2x text-warning"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5 class="fw-bold">Гибкие условия поставки</h5>
+                                <p class="small text-white-50 m-0">Отгрузка со склада в Китае или доставка до назначенного адреса в Китае.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系表单区 -->
+    <section id="contacts" class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-lg border-0 overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-lg-5 bg-primary text-white p-5 d-flex flex-column justify-content-center">
+                                <h3 class="fw-bold mb-4">Свяжитесь с нами</h3>
+                                <p class="mb-4">Наш менеджер ответит на ваш запрос в течение 24 часов.</p>
+                                <div class="mb-3"><i class="fas fa-envelope me-3"></i> eddie@global-hydraulic.ru</div>
+                                <div class="mb-3"><i class="fas fa-phone me-3"></i> +86-15861883072</div>
+                                <div class="mb-3"><i class="fab fa-whatsapp me-3"></i> +86-15861883072</div>
+                                <div class="mt-auto pt-4">
+                                    <div class="mb-3">
+                                        <i class="fas fa-map-marker-alt me-2"></i> <strong>г. Москва, Россия</strong>
+                                        <div class="small opacity-75 ms-4">Представительство / Офис</div>
+                                    </div>
+                                    <div>
+                                        <i class="fas fa-warehouse me-2"></i> <strong>Hangzhou, China</strong>
+                                        <div class="small opacity-75 ms-4">Центральный склад</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 p-5 bg-white">
+                                <form id="contactForm">
+                                    <h4 class="fw-bold mb-4 text-dark">Оставить заявку</h4>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control bg-light border-0 p-3" placeholder="Имя" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control bg-light border-0 p-3" placeholder="Email" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control bg-light border-0 p-3" placeholder="Телефон / WhatsApp / Telegram">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control bg-light border-0 p-3" rows="4" placeholder="Ваш запрос (модель, количество)" required></textarea>
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <button type="submit" class="btn btn-primary-custom w-100 py-3">ОТПРАВИТЬ ЗАПРОС</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="text-white">GLOBAL HYDRAULIC</h5>
+                    <p class="small">Ваш надежный партнер в мире гидравлики. Поставки качественных комплектующих для строительной, дорожной и промышленной техники.</p>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Продукция</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="product-pumps.html">Насосы</a></li>
+                        <li class="mb-2"><a href="product-motors.html">Моторы</a></li>
+                        <li class="mb-2"><a href="product-gearpumps.html">Шестеренные насосы</a></li>
+                        <li class="mb-2"><a href="product-parts.html">Запчасти</a></li>
+                        <li class="mb-2"><a href="product-valves.html">Клапаны</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Компания</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="about.html">О нас</a></li>
+                        <li class="mb-2"><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Подписаться</h5>
+                    <p class="small">Получайте актуальные цены и наличие на складе.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Email">
+                        <button class="btn btn-primary-custom" type="button">OK</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="text-center small">
+                &copy; 2024 Global Hydraulic Technology Co., Ltd. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 社交浮窗 (保持你的 MAX 和 Wechat) -->
+    <div class="fab-wrapper">
+        <a href="https://t.me/+8615861883072" class="fab-button tg-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://wa.me/8615861883072" class="fab-button wa-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="fab-button wx-btn" data-bs-toggle="modal" data-bs-target="#wechatModal" title="WeChat"><i class="fab fa-weixin"></i></a>
+        <a href="#" class="fab-button max-btn" data-bs-toggle="modal" data-bs-target="#maxModal" title="MAX Messenger"><i class="max-icon">MAX</i></a>
+    </div>
+
+    <!-- Modals (Wechat/Max) -->
+    <div class="modal fade" id="wechatModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content text-center">
+                <div class="modal-header border-0"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body pb-4">
+                    <h5 class="mb-3 text-success fw-bold"><i class="fab fa-weixin"></i> WeChat</h5>
+                    <img src="images/wechat-qr.jpg" onerror="this.src='https://via.placeholder.com/200x200?text=WeChat+QR'" class="img-fluid rounded mb-3 shadow-sm" alt="WeChat QR">
+                    <p class="mb-2 fw-bold select-all">Vacil</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="maxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content text-center">
+                <div class="modal-header border-0"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body pb-4">
+                    <h5 class="mb-3 text-primary fw-bold">MAX Messenger</h5>
+                    <img src="images/max-qr.jpg" onerror="this.src='https://via.placeholder.com/200x200?text=MAX+QR'" class="img-fluid rounded mb-3 shadow-sm" alt="MAX QR">
+                    <p class="mb-2 fw-bold select-all">Vacil</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* 复用之前的浮窗样式并优化 */
+        .fab-wrapper { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; gap: 10px; }
+        .fab-button { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: 0.3s; }
+        .fab-button:hover { transform: scale(1.1); color: white; }
+        .tg-btn { background-color: #0088cc; }
+        .wa-btn { background-color: #25d366; }
+        .wx-btn { background-color: #07c160; }
+        .max-btn { background-color: #0077FF; font-weight: 900; font-size: 14px; }
+        .max-icon { font-style: normal; }
+        .select-all { user-select: all; cursor: pointer; }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 导航栏滚动变色
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('shadow-sm');
+                document.querySelector('.navbar').style.padding = '10px 0';
+            } else {
+                document.querySelector('.navbar').classList.remove('shadow-sm');
+                document.querySelector('.navbar').style.padding = '15px 0';
+            }
+        });
+        
+        // 表单简单交互
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'ОТПРАВКА...';
+            btn.disabled = true;
+            setTimeout(() => {
+                alert('Спасибо! Ваша заявка принята. (模拟发送成功)');
+                this.reset();
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

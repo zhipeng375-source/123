@@ -8,7 +8,14 @@ export default defineConfig({
     build(),
     devServer({
       adapter,
-      entry: 'src/index.tsx'
+      entry: 'src/index.tsx',
+      exclude: [
+        /.*\.html$/, // 排除所有 .html 文件，让 Vite 直接服务它们
+        /.*\.jpg$/,
+        /.*\.png$/,
+        /.*\.css$/,
+        /.*\.js$/
+      ]
     })
   ]
 })

@@ -2,8 +2,8 @@
   "name": "webapp",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "vite build && cp index.html dist/ && cp -r public/* dist/",
     "preview": "wrangler pages dev",
     "deploy": "npm run build && wrangler pages deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
